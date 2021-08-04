@@ -1,6 +1,3 @@
-# GoTripSdkDemo
-GoTrip SDK Demo
-
 # Get Started with GoTrip on Android
 ## Add GoTrip to your app <a href="https://github.com/gomapae/GoTripSdkDemo">Demo</a>
 1. In the buildscript.repositories section of your top-level build.gradle file, make sure GoMap's Maven repo is listed:
