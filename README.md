@@ -23,7 +23,7 @@
 2. In the dependencies section of your app-level build.gradle file, add the GoTrip SDK for Android, and optionally, the Places static library and its required dependencies:
 ```fortran
     dependencies {
-        implementation 'com.gomap.android:gotrip:1.0.0'
+        implementation 'com.gomap.android:gotrip:{lastVersion}'//1.0.1
     }
 ```
 
