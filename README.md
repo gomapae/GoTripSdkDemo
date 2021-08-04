@@ -2,21 +2,29 @@
 ## Add GoTrip to your app <a href="https://github.com/gomapae/GoTripSdkDemo">Demo</a>
 1. In the buildscript.repositories section of your top-level build.gradle file, make sure GoMap's Maven repo is listed:
 ```fortran
-buildscript {
-    repositories {
-        maven {
-            url 'http://188.116.29.5:8081/repository/gomap-sdk/'
+    buildscript {
+        repositories {
+            maven {
+                url 'http://188.116.29.5:8081/repository/gomap-sdk/'
+            }
+            // ...
         }
-        // ...
     }
-}
+    allprojects {
+        repositories {
+            maven {
+                url 'http://188.116.29.5:8081/repository/gomap-sdk/'
+            }
+            // ...
+        }
+    }
 ```
 
 2. In the dependencies section of your app-level build.gradle file, add the GoTrip SDK for Android, and optionally, the Places static library and its required dependencies:
 ```fortran
-dependencies {
-    implementation 'com.gomap.android:gotrip:1.0.0'
-}
+    dependencies {
+        implementation 'com.gomap.android:gotrip:1.0.0'
+    }
 ```
 
 3. Sync your Gradle project.
@@ -40,7 +48,7 @@ dependencies {
 
 6. Update your ProGuard rules to keep GoTrip SDK for Android classes when code shrinking and obfuscating is enabled in release builds.
 ```fortran
--keep,allowoptimization class com.godrive.** { *; }
+    -keep,allowoptimization class com.godrive.** { *; }
 ```
 
 7. Initialize the GoTrip
