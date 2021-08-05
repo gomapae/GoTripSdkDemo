@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.godrive.GoDriveSDK;
-import com.godrive.bean.GoDriverConfig;
+import com.godrive.utils.LogUtil;
+import com.godrive.utils.contants.GoDriverConstant;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,9 +42,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init(View view) {
-        GoDriveSDK.getInstance().init(this, GoDriverConfig.getInstance().setUserId("220201001"), result -> {
-
-        }, true);
+        GoDriveSDK.Builder builder = new GoDriveSDK.Builder()
+                .setContext(this)
+                .setDebug(true)
+                .setUserId("220201001");
+        GoDriveSDK.getInstance().init(builder.build(), result -> {
+            LogUtil.iTag(GoDriverConstant.TAG, "result is ", new Gson().toJson(result));
+        });
     }
 
     public void startTrip(View view) {
