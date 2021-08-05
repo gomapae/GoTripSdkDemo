@@ -23,7 +23,7 @@
 2. In the dependencies section of your app-level build.gradle file, add the GoTrip SDK for Android, and optionally, the Places static library and its required dependencies:
 ```fortran
     dependencies {
-        implementation 'com.gomap.android:gotrip:{lastVersion}'//1.0.1
+        implementation 'com.gomap.android:gotrip:{lastVersion}'//1.0.2
     }
 ```
 
@@ -54,9 +54,13 @@
 7. Initialize the GoTrip
 ```fortran
     //unique id, you can use user's id or device's id
-    GoDriveSDK.getInstance().init(context, GoDriverConfig.getInstance().setUserId("user id  result -> {
-
-    }, true);
+     GoDriveSDK.Builder builder = new GoDriveSDK.Builder()
+                .setContext(this)
+                .setDebug(true)
+                .setUserId("your user id");
+        GoDriveSDK.getInstance().init(builder.build(), result -> {
+            LogUtil.iTag(GoDriverConstant.TAG, "result is ", new Gson().toJson(result));
+        });
 ```
 
 8. Get driver id of Trip
